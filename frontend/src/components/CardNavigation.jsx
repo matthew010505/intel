@@ -1,22 +1,25 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const CardNavigation = () => {
   // Array containing card names and external links
-  const cards = [
-    { title: "Stocks and IPO", link: "https://example.com/stocks-ipo" },
-    { title: "Futures & Options", link: "https://example.com/futures-options" },
-    { title: "Mutual Funds & ETF", link: "https://example.com/mutual-funds-etf" },
-    { title: "Currency & Commodity", link: "https://example.com/currency-commodity" },
-    { title: "StockCase", link: "https://example.com/stockcase" },
-    { title: "Global Investing", link: "https://example.com/global-investing" },
-  ];
+  const location = useLocation();
+  const cards= location.state?.data;
+  // const cards = [
+  //   { title: "Stocks and IPO", link: "https://example.com/stocks-ipo" },
+  //   { title: "Futures & Options", link: "https://example.com/futures-options" },
+  //   { title: "Mutual Funds & ETF", link: "https://example.com/mutual-funds-etf" },
+  //   { title: "Currency & Commodity", link: "https://example.com/currency-commodity" },
+  //   { title: "StockCase", link: "https://example.com/stockcase" },
+  //   { title: "Global Investing", link: "https://example.com/global-investing" },
+  // ];
 
   return (
     <div style={styles.container}>
       {cards.map((card, index) => (
         <a
           key={index}
-          href={card.link}
+          href={card.url}
           style={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -24,7 +27,7 @@ const CardNavigation = () => {
           <div style={styles.iconWrapper}>
             <div style={styles.icon}></div>
           </div>
-          <p style={styles.cardTitle}>{card.title}</p>
+          <p style={styles.cardTitle}>{card.scheme_name}</p>
         </a>
       ))}
     </div>

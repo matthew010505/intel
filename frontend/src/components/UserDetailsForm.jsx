@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   TextField,
@@ -86,7 +87,7 @@ const UserDetailsForm = () => {
     currentBenefits: "",
     specificNeeds: "",
   });
-
+  const navigate = useNavigate();
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -122,11 +123,12 @@ const UserDetailsForm = () => {
     e.preventDefault();
     console.log("Submitting form data:", formData);
     try {
-      const res = await axios.post("http://localhost:8080/fill", formData, {
+      const res = await axios.post("http://127.0.0.1:5000/predict", [formData], {
         headers: { "Content-Type": "application/json" },
       });
       reset();
-      console.log("Server response:", res.data);
+      console.log("Server response:", res.data[0].top_schemes);
+      navigate("/dashboard", { state: { data: res.data[0].top_schemes } });
     } catch (error) {
       console.error("Error submitting form:", error);
     }

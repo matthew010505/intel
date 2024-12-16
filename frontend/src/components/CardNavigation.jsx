@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
+import Header from './Header'
+import Footer from './Footer'
 const CardNavigation = () => {
   // Array containing card names and external links
   const location = useLocation();
@@ -15,6 +16,8 @@ const CardNavigation = () => {
   // ];
 
   return (
+    <>
+    <Header/>
     <div style={styles.container}>
       {cards.map((card, index) => (
         <a
@@ -31,6 +34,8 @@ const CardNavigation = () => {
         </a>
       ))}
     </div>
+    <Footer/>
+    </>
   );
 };
 

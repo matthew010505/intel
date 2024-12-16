@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from './Header'
+import Footer from './Footer'
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -25,17 +27,17 @@ const customTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#FEFAF6", // Soft pinkish white for primary elements
+      main: "#000", // Soft pinkish white for primary elements
     },
     secondary: {
-      main: "#EADBC8", // Warm beige for secondary elements
+      main: "#000", // Warm beige for secondary elements
     },
     background: {
       default: "#FEFAF6", // Light cream-pink background
       paper: "#fff", // White for paper
     },
     text: {
-      primary: "#102C57", // Deep navy blue for primary text
+      primary: "#000", // Deep navy blue for primary text
       secondary: "#DAC0A3", // Light beige for secondary text
     },
   },
@@ -44,12 +46,12 @@ const customTheme = createTheme({
     h4: {
       fontWeight: 700,
       fontSize: "1.5rem",
-      color: "#102C57", // Deep navy blue for headings
+      color: "#000", // Deep navy blue for headings
     },
     h6: {
       fontWeight: 600,
       fontSize: "1.25rem",
-      color: "#DAC0A3", // Light beige for section labels
+      color: "#000", // Light beige for section labels
     },
   },
 
@@ -59,7 +61,7 @@ const customTheme = createTheme({
         root: {
           color: "#DAC0A3", // Default unselected color
           "&.Mui-checked": {
-            color: "#102C57", // Selected color
+            color: "#000", // Selected color
           },
         },
       },
@@ -135,6 +137,8 @@ const UserDetailsForm = () => {
   };
 
   return (
+    <>
+    <Header/>
     <ThemeProvider theme={customTheme}>
       <CssBaseline />
       <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
@@ -164,16 +168,16 @@ const UserDetailsForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  InputLabelProps={{ style: { color: "#DAC0A3" } }}
+                  InputLabelProps={{ style: { color: "#000" } }}
                   InputProps={{
-                    style: { color: "#102C57" },
+                    style: { color: "#000" },
                   }}
                 />
               </Grid>
 
               <Grid item xs={6}>
                 <FormControl component="fieldset">
-                  <Typography variant="h6" sx={{ color: "#DAC0A3" }}>
+                  <Typography variant="h6" sx={{ color: "#000" }}>
                     Age
                   </Typography>
                   <RadioGroup
@@ -203,7 +207,7 @@ const UserDetailsForm = () => {
               {/* Gender */}
               <Grid item xs={6}>
                 <FormControl component="fieldset">
-                  <Typography variant="h6" sx={{ color: "#DAC0A3" }}>
+                  <Typography variant="h6" sx={{ color: "#000" }}>
                     Gender
                   </Typography>
                   <RadioGroup
@@ -235,9 +239,9 @@ const UserDetailsForm = () => {
                   value={formData.region}
                   onChange={handleChange}
                   required
-                  InputLabelProps={{ style: { color: "#DAC0A3" } }}
+                  InputLabelProps={{ style: { color: "#000" } }}
                   InputProps={{
-                    style: { color: "#102C57" },
+                    style: { color: "#000" },
                   }}
                 />
               </Grid>
@@ -245,7 +249,7 @@ const UserDetailsForm = () => {
               {/* Urban/Rural */}
               <Grid item xs={6}>
                 <FormControl component="fieldset">
-                  <Typography variant="h6" sx={{ color: "#DAC0A3" }}>
+                  <Typography variant="h6" sx={{ color: "#000" }}>
                     Urban or Rural
                   </Typography>
                   <RadioGroup
@@ -257,13 +261,13 @@ const UserDetailsForm = () => {
                       value="urban"
                       control={<Radio />}
                       label="Urban"
-                      style={{ color: "#DAC0A3" }}
+                      style={{ color: "#000" }}
                     />
                     <FormControlLabel
                       value="rural"
                       control={<Radio />}
                       label="Rural"
-                      style={{ color: "#DAC0A3" }}
+                      style={{ color: "#000" }}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -284,15 +288,15 @@ const UserDetailsForm = () => {
                   value={formData.annualIncome}
                   onChange={handleChange}
                   required
-                  InputLabelProps={{ style: { color: "#90caf9" } }}
+                  InputLabelProps={{ style: { color: "#000" } }}
                   InputProps={{
-                    style: { color: "001F3F" },
+                    style: { color: "#000" },
                   }}
                 />
               </Grid>
               <Grid item xs={6}>
                 <FormControl fullWidth>
-                  <InputLabel style={{ color: "#90caf9" }}>
+                  <InputLabel style={{ color: "#000" }}>
                     Income Source
                   </InputLabel>
                   <Select
@@ -300,7 +304,7 @@ const UserDetailsForm = () => {
                     value={formData.incomeSource}
                     onChange={handleChange}
                     required
-                    style={{ color: "001F3F" }}
+                    style={{ color: "000" }}
                   >
                     <MenuItem value="farmer">Farmer</MenuItem>
                     <MenuItem value="salaried">Salaried</MenuItem>
@@ -312,7 +316,7 @@ const UserDetailsForm = () => {
               {/* Taxpayer status (radio buttons) */}
               <Grid item xs={6}>
                 <FormControl component="fieldset">
-                  <Typography variant="h6" sx={{ color: "#90caf9" }}>
+                  <Typography variant="h6" sx={{ color: "#000" }}>
                     Taxpayer Status
                   </Typography>
                   <RadioGroup
@@ -324,13 +328,13 @@ const UserDetailsForm = () => {
                       value="yes"
                       control={<Radio />}
                       label="Yes"
-                      style={{ color: "#DAC0A3" }}
+                      style={{ color: "#000" }}
                     />
                     <FormControlLabel
                       value="no"
                       control={<Radio />}
                       label="No"
-                      style={{ color: "#DAC0A3" }}
+                      style={{ color: "#000" }}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -344,7 +348,7 @@ const UserDetailsForm = () => {
               </Grid>
               <Grid item xs={6}>
                 <FormControl fullWidth>
-                  <InputLabel style={{ color: "#90caf9" }}>
+                  <InputLabel style={{ color: "#000" }}>
                     Education Level
                   </InputLabel>
                   <Select
@@ -368,9 +372,9 @@ const UserDetailsForm = () => {
                   name="skillset"
                   value={formData.skillset}
                   onChange={handleChange}
-                  InputLabelProps={{ style: { color: "#90caf9" } }}
+                  InputLabelProps={{ style: { color: "#000" } }}
                   InputProps={{
-                    style: { color: "001F3F" },
+                    style: { color: "000" },
                   }}
                 />
               </Grid>
@@ -383,7 +387,7 @@ const UserDetailsForm = () => {
               </Grid>
               <Grid item xs={6}>
                 <FormControl fullWidth>
-                  <InputLabel style={{ color: "#90caf9" }}>
+                  <InputLabel style={{ color: "#000" }}>
                     Employment Type
                   </InputLabel>
                   <Select
@@ -391,7 +395,7 @@ const UserDetailsForm = () => {
                     value={formData.employmentType}
                     onChange={handleChange}
                     required
-                    style={{ color: "#001F3F" }}
+                    style={{ color: "#000" }}
                   >
                     <MenuItem value="government">Government</MenuItem>
                     <MenuItem value="private">Private</MenuItem>
@@ -402,13 +406,13 @@ const UserDetailsForm = () => {
               </Grid>
               <Grid item xs={6}>
                 <FormControl fullWidth>
-                  <InputLabel style={{ color: "#90caf9" }}>Sector</InputLabel>
+                  <InputLabel style={{ color: "#000" }}>Sector</InputLabel>
                   <Select
                     name="sector"
                     value={formData.sector}
                     onChange={handleChange}
                     required
-                    style={{ color: "001F3F" }}
+                    style={{ color: "000" }}
                   >
                     <MenuItem value="agriculture">Agriculture</MenuItem>
                     <MenuItem value="it">IT</MenuItem>
@@ -435,7 +439,7 @@ const UserDetailsForm = () => {
                     />
                   }
                   label="Disabilities"
-                  sx={{ color: "001F3F" }}
+                  sx={{ color: "000" }}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -515,6 +519,8 @@ const UserDetailsForm = () => {
         </Paper>
       </Container>
     </ThemeProvider>
+    <Footer/>
+    </>
   );
 };
 
